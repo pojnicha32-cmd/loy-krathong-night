@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ลอยกระทงยามค่ำคืน — อธิษฐานร่วมกันสองเรา</title>
+  <title>ลอยกระทงยามค่ำคืน — ก้อง & ออม</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
       --gold: #f4c95d;
       --gold-soft: rgba(244, 201, 93, 0.25);
       --amber: #ff9f43;
-      --you-color: #ffd166;
-      --partner-color: #ff8fab;
+      --kong-color: #ffd166;
+      --aom-color: #ff8fab;
       --panel-bg: rgba(13, 24, 43, 0.78);
       --panel-border: rgba(244, 201, 93, 0.28);
       --text-main: #fff8e7;
@@ -164,7 +164,7 @@
       pointer-events: auto;
     }
 
-    /* ตัวเลือกผู้ลอย 2 คน */
+    /* ตัวเลือกผู้ลอย ก้อง / ออม */
     .couple-row {
       grid-column: 1 / -1;
       display: flex;
@@ -188,10 +188,10 @@
       border: none;
       background: transparent;
       color: var(--text-muted);
-      padding: 6px 14px;
+      padding: 6px 16px;
       border-radius: 999px;
       font-family: 'Sarabun', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 500;
       cursor: pointer;
       display: flex;
@@ -206,25 +206,25 @@
       border-radius: 50%;
     }
 
-    .person-btn[data-person="you"] .dot {
-      background: var(--you-color);
-      box-shadow: 0 0 8px var(--you-color);
+    .person-btn[data-person="kong"] .dot {
+      background: var(--kong-color);
+      box-shadow: 0 0 8px var(--kong-color);
     }
 
-    .person-btn[data-person="partner"] .dot {
-      background: var(--partner-color);
-      box-shadow: 0 0 8px var(--partner-color);
+    .person-btn[data-person="aom"] .dot {
+      background: var(--aom-color);
+      box-shadow: 0 0 8px var(--aom-color);
     }
 
-    .person-btn.active[data-person="you"] {
+    .person-btn.active[data-person="kong"] {
       background: rgba(255, 209, 102, 0.18);
-      color: var(--you-color);
+      color: var(--kong-color);
       box-shadow: inset 0 0 0 1px rgba(255, 209, 102, 0.45);
     }
 
-    .person-btn.active[data-person="partner"] {
+    .person-btn.active[data-person="aom"] {
       background: rgba(255, 143, 171, 0.18);
-      color: var(--partner-color);
+      color: var(--aom-color);
       box-shadow: inset 0 0 0 1px rgba(255, 143, 171, 0.45);
     }
 
@@ -367,7 +367,7 @@
       border-color: rgba(244, 201, 93, 0.4);
     }
 
-    /* โมดัลสมุดบันทึกคำอธิษฐานของทั้งคู่ */
+    /* โมดัลสมุดบันทึกคำอธิษฐานของก้องและออม */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -419,13 +419,13 @@
 
     .wish-item {
       background: rgba(255, 255, 255, 0.04);
-      border-left: 3px solid var(--gold);
+      border-left: 3px solid var(--kong-color);
       border-radius: 12px;
       padding: 10px 12px;
     }
 
-    .wish-item.partner {
-      border-left-color: var(--partner-color);
+    .wish-item.aom {
+      border-left-color: var(--aom-color);
     }
 
     .wish-item-meta {
@@ -463,14 +463,14 @@
 
   <header class="top-bar">
     <div class="brand">
-      <h1>ลอยกระทงยามค่ำคืน</h1>
-      <p>อธิษฐานร่วมกันสองเรา • แตะหรือคลิกบนผิวน้ำเพื่อสร้างระลอกคลื่นและลอยกระทง</p>
+      <h1>ลอยกระทงยามค่ำคืน — ก้อง &amp; ออม</h1>
+      <p>แตะหรือคลิกบนผิวน้ำเพื่อสร้างระลอกคลื่น • พิมพ์คำอธิษฐานแล้วลอยกระทงได้เลย</p>
     </div>
     <div class="top-actions">
       <button id="soundToggle" class="chip-btn" title="เปิด/ปิดเสียงบรรยากาศ">
         <span>🔊</span> <span id="soundLabel">เสียง: เปิด</span>
       </button>
-      <button id="logToggle" class="chip-btn" title="ดูคำอธิษฐานของทั้งคู่">
+      <button id="logToggle" class="chip-btn" title="ดูคำอธิษฐานของก้องและออม">
         <span>📜</span> <span>บันทึก (<span id="wishCount">0</span>)</span>
       </button>
       <button id="hideDockBtn" class="chip-btn" title="ซ่อนแผงควบคุม">
@@ -485,21 +485,21 @@
 
   <section id="controlDock" class="control-dock">
     <div class="couple-row">
-      <div class="couple-switcher" role="group" aria-label="เลือกผู้ลอยกระทง">
-        <button class="person-btn active" data-person="you">
+      <div class="couple-switcher" role="group" aria-label="เลือกผู้ลอยกระทง ก้อง หรือ ออม">
+        <button class="person-btn active" data-person="kong">
           <span class="dot"></span>
-          <span>ของฉัน</span>
+          <span>ก้อง</span>
         </button>
-        <button class="person-btn" data-person="partner">
+        <button class="person-btn" data-person="aom">
           <span class="dot"></span>
-          <span>ของแฟน</span>
+          <span>ออม</span>
         </button>
       </div>
 
       <div class="couple-stats">
-        <span>ลอยแล้ว: <strong id="countYou">0</strong> ลำ</span>
+        <span>ก้องลอยแล้ว: <strong id="countKong">0</strong> ลำ</span>
         <span>•</span>
-        <span>แฟนลอยแล้ว: <strong id="countPartner">0</strong> ลำ</span>
+        <span>ออมลอยแล้ว: <strong id="countAom">0</strong> ลำ</span>
       </div>
     </div>
 
@@ -554,7 +554,7 @@
         class="wish-input"
         type="text"
         maxlength="90"
-        placeholder="พิมพ์คำอธิษฐานของฉัน..."
+        placeholder="พิมพ์คำอธิษฐานของก้อง..."
       />
       <button id="launchBtn" class="launch-btn">🕯️ ลอยกระทง</button>
     </div>
@@ -562,22 +562,22 @@
     <div class="hint-text">
       <span>💡 คลิก/แตะน้ำเพื่อสร้างระลอกคลื่น หรือกดปุ่ม <strong>ลอยกระทง</strong></span>
       <div class="quick-wishes">
-        <button class="quick-wish-chip" data-wish="ขอให้เรารักและดูแลกันไปนานๆ">ขอให้รักกันนานๆ</button>
-        <button class="quick-wish-chip" data-wish="ขอให้ปีนี้มีแต่ความสุขและสมหวัง">สุขสมหวัง</button>
+        <button class="quick-wish-chip" data-wish="ขอให้ก้องกับออมรักกันไปนานๆ">ขอให้รักกันนานๆ</button>
+        <button class="quick-wish-chip" data-wish="ขอให้มีความสุขและสมหวังทุกอย่าง">สุขสมหวัง</button>
         <button class="quick-wish-chip" data-wish="ขอให้เดินทางปลอดภัยและสุขภาพแข็งแรง">ปลอดภัยแข็งแรง</button>
       </div>
     </div>
   </section>
 
-  <!-- โมดัลสมุดบันทึกคำอธิษฐาน -->
+  <!-- โมดัลสมุดบันทึกคำอธิษฐานของก้องและออม -->
   <div id="logModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
       <div class="modal-header">
-        <h2 id="modalTitle">สมุดบันทึกคำอธิษฐานของสองเรา</h2>
+        <h2 id="modalTitle">สมุดบันทึกคำอธิษฐาน — ก้อง &amp; ออม</h2>
         <button id="closeModalBtn" class="chip-btn">✕ ปิด</button>
       </div>
       <div id="wishLog" class="wish-log">
-        <p style="color: var(--text-muted); font-size: 0.9rem;">ยังไม่มีคำอธิษฐานที่ถูกบันทึก ลองลอยกระทงแรกดูสิครับ</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">ยังไม่มีคำอธิษฐานที่ถูกบันทึก ก้องกับออมเริ่มลอยกระทงแรกได้เลยครับ</p>
       </div>
     </div>
   </div>
@@ -590,18 +590,18 @@
     let height = 0;
     let horizonY = 0;
 
-    // สถานะแอป
+    // ผู้ลอยมีเฉพาะ 'kong' และ 'aom' เริ่มต้นยังไม่มีใครลอย (counts: 0 ทั้งคู่, krathongs: [])
     const state = {
-      person: 'you', // 'you' | 'partner'
+      person: 'kong',
       krathongType: 'banana',
       soundEnabled: true,
-      counts: { you: 0, partner: 0 },
+      counts: { kong: 0, aom: 0 },
       logs: []
     };
 
     const krathongs = [];
     const ripples = [];
-    const lanterns = []; // โคมลอยบนฟ้าไกลๆ เพิ่มบรรยากาศค่ำคืน
+    const lanterns = [];
     const stars = [];
 
     function resize() {
@@ -650,7 +650,6 @@
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       audioCtx = new AudioContextClass();
 
-      // เสียงน้ำไหลแผ่วๆ (Pink/Brown noise ผ่าน lowpass filter)
       const bufferSize = audioCtx.sampleRate * 2;
       const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
       const output = noiseBuffer.getChannelData(0);
@@ -726,7 +725,6 @@
       });
     }
 
-    // สร้างระลอกคลื่น
     function addRipple(x, y, maxRadius = 75, tint = 'rgba(255, 240, 195, 0.45)') {
       if (y < horizonY + 8) return;
       ripples.push({
@@ -739,8 +737,8 @@
       });
     }
 
-    // สร้างกระทงใหม่
     function spawnKrathong({ x = null, y = null, wish = '', person = state.person, type = state.krathongType } = {}) {
+      const targetPerson = person === 'aom' ? 'aom' : 'kong';
       const cleanWish = wish.trim();
       const startX = x !== null ? x : width * (0.18 + Math.random() * 0.64);
       const startY = y !== null ? y : horizonY + 45 + Math.random() * (height - horizonY - 190);
@@ -755,7 +753,7 @@
         bobSpeed: 0.028 + Math.random() * 0.012,
         tiltPhase: Math.random() * Math.PI * 2,
         wish: cleanWish,
-        person,
+        person: targetPerson,
         type,
         flamePhase: Math.random() * Math.PI * 2,
         rippleTimer: 0,
@@ -763,14 +761,19 @@
       };
 
       krathongs.push(krathong);
-      addRipple(startX, startY + 8, 65, person === 'partner' ? 'rgba(255, 143, 171, 0.55)' : 'rgba(255, 209, 102, 0.55)');
+      addRipple(
+        startX,
+        startY + 8,
+        65,
+        targetPerson === 'aom' ? 'rgba(255, 143, 171, 0.55)' : 'rgba(255, 209, 102, 0.55)'
+      );
 
-      state.counts[person] += 1;
+      state.counts[targetPerson] += 1;
       updateStats();
 
       if (cleanWish) {
         state.logs.unshift({
-          person,
+          person: targetPerson,
           type,
           wish: cleanWish,
           time: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })
@@ -779,7 +782,6 @@
       }
     }
 
-    // วาดท้องฟ้า พระจันทร์ และเงาเรือนไทย/เจดีย์ไกลๆ
     function drawSkyAndHorizon(t) {
       const skyGrad = ctx.createLinearGradient(0, 0, 0, horizonY);
       skyGrad.addColorStop(0, '#070d1e');
@@ -788,7 +790,6 @@
       ctx.fillStyle = skyGrad;
       ctx.fillRect(0, 0, width, horizonY);
 
-      // ดวงดาว
       for (const s of stars) {
         s.phase += s.speed;
         const alpha = 0.35 + Math.sin(s.phase) * 0.35;
@@ -798,7 +799,6 @@
         ctx.fill();
       }
 
-      // พระจันทร์เต็มดวงอบอุ่น
       const moonX = width * 0.78;
       const moonY = Math.max(75, horizonY * 0.34);
       const moonGlow = ctx.createRadialGradient(moonX, moonY, 10, moonX, moonY, 110);
@@ -815,7 +815,6 @@
       ctx.arc(moonX, moonY, 28, 0, Math.PI * 2);
       ctx.fill();
 
-      // โคมลอยไกลๆ บนฟ้า
       for (const l of lanterns) {
         l.x += l.vx;
         l.y += l.vy;
@@ -835,7 +834,6 @@
         ctx.fill();
       }
 
-      // เงาเจดีย์และเรือนไทยริมฝั่ง
       ctx.fillStyle = '#0a1224';
       ctx.beginPath();
       ctx.moveTo(0, horizonY);
@@ -844,7 +842,6 @@
       ctx.lineTo(width * 0.12, horizonY - 46);
       ctx.lineTo(width * 0.16, horizonY - 22);
       ctx.lineTo(width * 0.28, horizonY - 14);
-      // เจดีย์
       const pX = width * 0.42;
       ctx.lineTo(pX - 18, horizonY - 14);
       ctx.lineTo(pX - 10, horizonY - 42);
@@ -858,7 +855,6 @@
       ctx.closePath();
       ctx.fill();
 
-      // แสงไฟอุ่นๆ ริมฝั่ง
       const bankLights = [0.12, 0.42, 0.65, 0.88];
       for (const ratio of bankLights) {
         const lx = width * ratio;
@@ -873,7 +869,6 @@
       }
     }
 
-    // วาดผิวน้ำและแสงสะท้อนจันทร์
     function drawWater(t) {
       const waterGrad = ctx.createLinearGradient(0, horizonY, 0, height);
       waterGrad.addColorStop(0, '#0e283d');
@@ -882,7 +877,6 @@
       ctx.fillStyle = waterGrad;
       ctx.fillRect(0, horizonY, width, height - horizonY);
 
-      // เส้นสะท้อนแสงจันทร์บนผิวน้ำ
       const moonX = width * 0.78;
       for (let i = 0; i < 24; i++) {
         const progress = i / 24;
@@ -895,7 +889,6 @@
         ctx.fill();
       }
 
-      // ริ้วน้ำอ่อนๆ แนวนอน
       ctx.strokeStyle = 'rgba(155, 210, 240, 0.05)';
       ctx.lineWidth = 1;
       for (let row = 0; row < 12; row++) {
@@ -910,7 +903,6 @@
       }
     }
 
-    // วาดระลอกคลื่น
     function drawRipples() {
       for (let i = ripples.length - 1; i >= 0; i--) {
         const r = ripples[i];
@@ -931,7 +923,6 @@
       }
     }
 
-    // วาดกระทงแต่ละแบบ
     function drawKrathong(k) {
       k.age += 1;
       k.bobPhase += k.bobSpeed;
@@ -941,7 +932,6 @@
       k.x += k.vx;
       k.y = k.baseY + Math.sin(k.bobPhase) * 3.5;
 
-      // วนกลับมาทางซ้ายเมื่อลอยพ้นจอ
       if (k.x - 70 > width) {
         k.x = -70;
         k.baseY = horizonY + 45 + Math.random() * (height - horizonY - 190);
@@ -952,23 +942,23 @@
         addRipple(k.x, k.y + 8 * k.scale, 46 * k.scale, 'rgba(255, 224, 145, 0.35)');
       }
 
-      const accent = k.person === 'partner' ? '#ff8fab' : '#ffd166';
+      const isAom = k.person === 'aom';
+      const accent = isAom ? '#ff8fab' : '#ffd166';
+      const nameLabel = isAom ? 'ออม' : 'ก้อง';
 
       ctx.save();
       ctx.translate(k.x, k.y);
       ctx.scale(k.scale, k.scale);
       ctx.rotate(Math.sin(k.tiltPhase) * 0.035);
 
-      // แสงเรืองรองบนผิวน้ำรอบกระทง
       const waterGlow = ctx.createRadialGradient(0, 8, 4, 0, 8, 56);
-      waterGlow.addColorStop(0, k.person === 'partner' ? 'rgba(255, 143, 171, 0.34)' : 'rgba(255, 200, 95, 0.36)');
+      waterGlow.addColorStop(0, isAom ? 'rgba(255, 143, 171, 0.34)' : 'rgba(255, 200, 95, 0.36)');
       waterGlow.addColorStop(1, 'rgba(255, 180, 70, 0)');
       ctx.fillStyle = waterGlow;
       ctx.beginPath();
       ctx.ellipse(0, 8, 56, 20, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // ฐานใบตอง
       ctx.fillStyle = '#3f7536';
       ctx.strokeStyle = '#254a1f';
       ctx.lineWidth = 1.5;
@@ -977,7 +967,6 @@
       ctx.fill();
       ctx.stroke();
 
-      // กลีบใบตองพับด้านข้าง
       ctx.fillStyle = '#58994b';
       for (let i = -3; i <= 3; i++) {
         const px = i * 7.5;
@@ -987,7 +976,6 @@
         ctx.fill();
       }
 
-      // ตกแต่งตามแบบกระทง
       if (k.type === 'banana') {
         ctx.fillStyle = '#f6bd3b';
         ctx.beginPath();
@@ -1033,7 +1021,6 @@
         ctx.stroke();
       }
 
-      // เทียนและเปลวไฟ
       const candleTopY = k.type === 'lantern' ? -17 : -11;
       ctx.fillStyle = '#fff5d6';
       ctx.fillRect(-1.8, candleTopY, 3.6, 11);
@@ -1041,7 +1028,6 @@
       const flicker = 1 + Math.sin(k.flamePhase) * 0.14;
       const flameY = candleTopY - 5;
 
-      // รัศมีเปลวไฟ
       const fg = ctx.createRadialGradient(0, flameY, 1, 0, flameY, 22 * flicker);
       fg.addColorStop(0, 'rgba(255, 245, 180, 0.9)');
       fg.addColorStop(0.4, 'rgba(255, 159, 28, 0.35)');
@@ -1051,7 +1037,6 @@
       ctx.arc(0, flameY, 22 * flicker, 0, Math.PI * 2);
       ctx.fill();
 
-      // ตัวเปลวไฟ
       ctx.fillStyle = '#ff9f1c';
       ctx.beginPath();
       ctx.moveTo(0, flameY - 8 * flicker);
@@ -1064,22 +1049,21 @@
       ctx.arc(0, flameY + 0.5, 2.2, 0, Math.PI * 2);
       ctx.fill();
 
-      // ป้ายบ่งบอกเจ้าของกระทง (ฉัน / แฟน)
       ctx.fillStyle = accent;
       ctx.font = '600 11px Sarabun, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText(k.person === 'partner' ? '♥ แฟน' : '✦ ฉัน', 0, 23);
+      ctx.fillText(nameLabel, 0, 23);
 
-      // คำอธิษฐานลอยอยู่เหนือกระทง
       if (k.wish) {
         const labelY = candleTopY - 24;
+        const fullWish = `${nameLabel}: ${k.wish}`;
         ctx.font = '500 13px Sarabun, sans-serif';
-        const textWidth = Math.min(260, ctx.measureText(k.wish).width);
+        const textWidth = Math.min(270, ctx.measureText(fullWish).width);
         const boxW = textWidth + 22;
         const boxH = 26;
 
         ctx.fillStyle = 'rgba(10, 19, 36, 0.78)';
-        ctx.strokeStyle = k.person === 'partner' ? 'rgba(255, 143, 171, 0.55)' : 'rgba(244, 201, 93, 0.55)';
+        ctx.strokeStyle = isAom ? 'rgba(255, 143, 171, 0.55)' : 'rgba(244, 201, 93, 0.55)';
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.roundRect(-boxW / 2, labelY - boxH / 2, boxW, boxH, 13);
@@ -1087,7 +1071,7 @@
         ctx.stroke();
 
         ctx.fillStyle = '#fff8e7';
-        ctx.fillText(k.wish, 0, labelY + 4.5, 250);
+        ctx.fillText(fullWish, 0, labelY + 4.5, 260);
       }
 
       ctx.restore();
@@ -1098,7 +1082,6 @@
       drawWater(now);
       drawRipples();
 
-      // เรียงลำดับจากบนลงล่างตามความลึกของน้ำ
       krathongs.sort((a, b) => a.y - b.y);
       for (const k of krathongs) {
         drawKrathong(k);
@@ -1109,14 +1092,13 @@
 
     requestAnimationFrame(animate);
 
-    // การโต้ตอบกับ UI
     const wishInput = document.getElementById('wishInput');
     const launchBtn = document.getElementById('launchBtn');
     const personBtns = document.querySelectorAll('.person-btn');
     const krathongCards = document.querySelectorAll('.krathong-card');
     const quickWishChips = document.querySelectorAll('.quick-wish-chip');
-    const countYouEl = document.getElementById('countYou');
-    const countPartnerEl = document.getElementById('countPartner');
+    const countKongEl = document.getElementById('countKong');
+    const countAomEl = document.getElementById('countAom');
     const wishCountEl = document.getElementById('wishCount');
     const soundToggle = document.getElementById('soundToggle');
     const soundLabel = document.getElementById('soundLabel');
@@ -1129,13 +1111,13 @@
     const showDockBtn = document.getElementById('showDockBtn');
 
     function setPerson(person) {
-      state.person = person;
+      state.person = person === 'aom' ? 'aom' : 'kong';
       personBtns.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.person === person);
+        btn.classList.toggle('active', btn.dataset.person === state.person);
       });
-      wishInput.placeholder = person === 'partner'
-        ? 'พิมพ์คำอธิษฐานของแฟน...'
-        : 'พิมพ์คำอธิษฐานของฉัน...';
+      wishInput.placeholder = state.person === 'aom'
+        ? 'พิมพ์คำอธิษฐานของออม...'
+        : 'พิมพ์คำอธิษฐานของก้อง...';
     }
 
     personBtns.forEach(btn => {
@@ -1168,7 +1150,6 @@
       if (e.key === 'Enter') handleLaunch();
     });
 
-    // คลิกหรือแตะบนผิวน้ำเพื่อสร้างระลอกคลื่น และหากพิมพ์คำอธิษฐานไว้จะลอยกระทงตรงจุดนั้นด้วย
     canvas.addEventListener('pointerdown', (e) => {
       const rect = canvas.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -1176,12 +1157,12 @@
 
       if (y <= horizonY + 6) return;
 
-      const tint = state.person === 'partner'
+      const tint = state.person === 'aom'
         ? 'rgba(255, 143, 171, 0.55)'
         : 'rgba(255, 209, 102, 0.55)';
 
       addRipple(x, y, 85, tint);
-      playRippleSound(state.person === 'partner' ? 35 : 0);
+      playRippleSound(state.person === 'aom' ? 35 : 0);
 
       if (wishInput.value.trim().length > 0) {
         spawnKrathong({ x, y, wish: wishInput.value });
@@ -1191,8 +1172,8 @@
     });
 
     function updateStats() {
-      countYouEl.textContent = state.counts.you;
-      countPartnerEl.textContent = state.counts.partner;
+      countKongEl.textContent = state.counts.kong;
+      countAomEl.textContent = state.counts.aom;
       wishCountEl.textContent = state.logs.length;
     }
 
@@ -1205,12 +1186,12 @@
 
     function renderLogs() {
       if (state.logs.length === 0) {
-        wishLogEl.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">ยังไม่มีคำอธิษฐานที่ถูกบันทึก ลองลอยกระทงแรกดูสิครับ</p>';
+        wishLogEl.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">ยังไม่มีคำอธิษฐานที่ถูกบันทึก ก้องกับออมเริ่มลอยกระทงแรกได้เลยครับ</p>';
         return;
       }
 
       wishLogEl.innerHTML = state.logs.map(item => {
-        const whoLabel = item.person === 'partner' ? '♥ ของแฟน' : '✦ ของฉัน';
+        const whoLabel = item.person === 'aom' ? 'ออม' : 'ก้อง';
         return `
           <div class="wish-item ${item.person}">
             <div class="wish-item-meta">
@@ -1251,23 +1232,6 @@
     hideDockBtn.addEventListener('click', () => controlDock.classList.add('collapsed'));
     showDockBtn.addEventListener('click', () => controlDock.classList.remove('collapsed'));
 
-    // ลอยกระทงเริ่มต้น 2 ลำ (ของฉัน 1 ลำ และของแฟน 1 ลำ) ให้บรรยากาศพร้อมตั้งแต่เปิดหน้าเว็บ
-    spawnKrathong({
-      x: width * 0.28,
-      y: horizonY + 85,
-      wish: 'ขอให้เรามีความสุขด้วยกันในทุกๆ คืน',
-      person: 'you',
-      type: 'banana'
-    });
-    spawnKrathong({
-      x: width * 0.56,
-      y: horizonY + 135,
-      wish: 'ขอให้รอยยิ้มนี้คงอยู่กับเราตลอดไป',
-      person: 'partner',
-      type: 'lotus'
-    });
-    // ปรับตัวนับเริ่มต้นให้สะอาด
-    state.counts = { you: 1, partner: 1 };
     updateStats();
   </script>
 </body>
